@@ -44,36 +44,6 @@ flowchart TD
 - Handles invalid non-number input
 - Runs directly in the terminal
 
-## Run Locally
-
-Compile the game:
-
-```bash
-gcc Project1.c -o guess-game
-```
-
-Run it:
-
-```bash
-./guess-game
-```
-
-On Windows PowerShell:
-
-```powershell
-gcc Project1.c -o guess-game.exe
-.\guess-game.exe
-```
-
-## File Structure
-
-```text
-Random-number-guess-game/
-|-- Project1.c
-|-- README.md
-`-- .gitignore
-```
-
 ## What I Learned
 
 This project practices C basics like variables, loops, conditionals, random number generation, user input, and simple terminal interaction.
