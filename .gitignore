@@ -1,0 +1,6 @@
+*.exe
+*.out
+*.o
+*.obj
+guess-game
+guess-game.exe
