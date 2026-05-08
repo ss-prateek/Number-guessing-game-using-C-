@@ -1,54 +1,38 @@
 /*
- * Random Number Guess Game
- *
- * The program chooses a random number from 1 to 100. The player keeps guessing
- * until they find it, and the game gives "higher" or "lower" hints after each
- * attempt.
- */
+We will write a program that generates a random number and asks the player to guess
+it. If the player’s guess is higher than the actual number, the program displays “Lower
+number please”. Similarly, if the user’s guess is too low, the program prints “Higher
+number please”.
+When the user guesses the correct number, the program displays the number of
+guesses the player used to arrive at the number.
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
-int main(void) {
-    const int min = 1;
-    const int max = 100;
-    int secret_number;
+int main() {
+    int min = 1, max = 100;
+    srand(time(0));  
+    
+    int num = (rand() % (max - min + 1)) + min;
+    int no_of_guesses = 0;
     int guessed_number;
-    int number_of_guesses = 0;
-
-    srand((unsigned int)time(NULL));
-    secret_number = (rand() % (max - min + 1)) + min;
-
-    printf("=====================================\n");
-    printf("       Random Number Guess Game       \n");
-    printf("=====================================\n");
-    printf("I picked a number between %d and %d.\n", min, max);
-    printf("Can you guess it?\n\n");
-
-    while (1) {
-        printf("Enter your guess: ");
-
-        if (scanf("%d", &guessed_number) != 1) {
-            printf("Please enter a valid whole number.\n");
-
-            while (getchar() != '\n') {
-            }
-
-            continue;
+    
+    //printf("Random number between %d and %d: %d\n", min, max, num);
+    do{
+        printf("Guess the number : ");
+        scanf("%d",&guessed_number);
+        if(guessed_number > num){
+            printf("Lower number please! \n");
+        }else if(guessed_number < num){
+            printf("Higher number please! \n");
+        }else{
+            printf("Congrats!! \n");
         }
-
-        number_of_guesses++;
-
-        if (guessed_number > secret_number) {
-            printf("Lower number please!\n\n");
-        } else if (guessed_number < secret_number) {
-            printf("Higher number please!\n\n");
-        } else {
-            printf("\nCongrats! You guessed the number in %d guesses.\n", number_of_guesses);
-            break;
-        }
-    }
-
+        no_of_guesses++;
+    }while(guessed_number != num);
+    printf("You guessed the number is %d guesses",no_of_guesses);
     return 0;
 }
+
